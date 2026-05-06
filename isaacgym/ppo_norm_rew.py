@@ -438,7 +438,7 @@ if __name__ == "__main__":
                         mean_reward_mask = torch.mean(b_returns_select)
                         mask_greater_than_mean = (b_returns_select > mean_reward_mask) & (torch.flatten(td) < 0)
 
-                        mask_less_than_mean = (b_returns_select <= mean_reward_mask) & (torch.flatten(td) < 0)
+                        mask_less_than_mean = (b_returns_select < mean_reward_mask) & (torch.flatten(td) < 0)
 
                         noise[mask_greater_than_mean] = -abs(noise[mask_greater_than_mean])
                         noise[mask_less_than_mean] = abs(noise[mask_less_than_mean])
